@@ -1,0 +1,92 @@
+Table Clientes {
+  id_usuarios integer
+  nome varchar
+  cpf varchar 
+  produto_comprado varchar
+  quantidade_comprado integer
+}
+
+Table Funcionarios{
+  id_funcionario integer
+  nome varchar 
+  cpf varchar 
+  carga_horaria integer
+}
+
+Table Produtos{
+  id_produtos integer
+  nome varchar
+  quantidade integer
+  preço integer
+}
+Table Categoria{
+  id_categoria integer
+  nome_categoria varchar
+}
+
+Table Faturamento{
+ notas varchar
+ boletos varchar
+ datas_vencimento_contas integer
+}
+Table Vendas{
+  id_vendas integer
+  data_venda integer 
+  valor_total integer
+  forma_pagamento varchar
+}
+
+Table Fornecedor {
+  id_fornecedor integer
+  nome_produto_pedido varchar
+  quantidade_produto_pedido integer 
+}
+
+Table Transportadora{
+  id_transportadora integer
+  nome_transportadora varchar 
+  pedido_em_transito varchar 
+  quantidade_em_transito integer 
+}
+Table Ex_Funcionarios {
+  id_Ex_Funcionarios integer
+  nome varchar 
+  cpf varchar 
+  Data_de_Saida integer 
+}
+Table Estoque {
+  id_Estoque integer 
+  nome_Produto varchar 
+  quantidade_Produto integer 
+}
+Table Produtos_Vencimento{
+  id_produto integer
+  nome_produto varchar
+  data_vencimento integer 
+
+}
+Table Epi{
+  id_epi integer
+  nome varchar 
+  id_epc integer 
+}
+
+
+
+ 
+
+
+
+
+
+Ref: "Fornecedor"."id_fornecedor" < "Transportadora"."nome_transportadora"
+
+Ref: "Estoque"."id_Estoque" < "Produtos"."nome"
+
+Ref: "Funcionarios"."nome" < "Epi"."id_epi"
+
+Ref: "Produtos"."nome" < "Produtos_Vencimento"."data_vencimento"
+
+Ref: "Vendas"."id_vendas" < "Funcionarios"."carga_horaria"
+
+Ref: "Categoria"."id_categoria" < "Produtos"."quantidade"
