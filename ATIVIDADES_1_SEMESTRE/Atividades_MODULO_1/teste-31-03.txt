@@ -1,0 +1,61 @@
+table usuario{
+  id int [pk, increment]
+  nome varchar (50) [unique]
+  email varchar (100)
+  data_cadastro datetime [default: `now()`]
+}
+
+ref: tabela_filha.coluna_fk > tabela_pai.coluna_pk
+(1:1) ou (1:N)
+
+(n:m)
+
+tabela 2:
+table pessoas{
+  id int [pk, increment]
+  nome varchar(50)
+}
+
+table documentos{
+  id int [pk, increment]
+  id_pessoa int [unique]
+  numero varchar(20)
+}
+
+ref: documentos.id_pessoa > pessoas.id
+
+
+
+
+//1 para varios
+table clientes{
+  id int [pk, increment]
+  nome varchar(50)
+}
+table produtos{
+  id int [pk, increment]
+  id_clientes int 
+  data_pedido datetime
+  
+}
+ref: produtos.id_clientes > clientes.id
+
+
+// 1 para muitos
+table alunos{
+  id int [pk, increment]
+  nome varchar(50)
+}
+
+table cursos{
+  id int [pk, increment]
+  titulo varchar(100)
+}
+
+table matriculas{
+  id int [pk,increment]
+  id_alunos int
+  id_curso int 
+}
+ref: matriculas.id_alunos >  alunos.id
+ref: matriculas.id_curso > cursos.id
