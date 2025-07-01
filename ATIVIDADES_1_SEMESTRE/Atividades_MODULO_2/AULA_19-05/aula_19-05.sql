@@ -58,4 +58,38 @@ FROM clientes c
 JOIN pedidos p ON c.idcliente = p.id_cliente
 GROUP BY c.nome;
 
+SELECT * FROM clientes;
+INSERT INTO clientes(nome) VALUES
+('fernanda'), -- ID 1--
+('pedro'),
+('victor'),
+('romário');
+-- CONSULTAS E COMANDOS --
+-- COMANDO LIKE: FILTRA NOMES COM PADRÕES ESPECIFICOS--
+SELECT * FROM clientes WHERE nome LIKE 'J%';
+
+-- IN: FILTRA MÚLTIPLOS VALORES COM CLAREZA, COMO EXEMPLO CHAVE PRIMARIA(ID'S) --
+SELECT * FROM pedido WHERE id_cliente IN (1,2);
+DESC PEDIDOS;
+
+-- MAX E MIN: ENCONTRA VALORES EXTREMOS NUMÉRICOS --
+SELECT 
+	MAX(valor_total) AS VALOR_TOTAL_MAXIMO,
+    MIN(valor_total)  AS VALOR_TOTAL_MINIMO
+FROM pedidos;
+-- ORDER BY: Organiza os resultados da busca no banco de dados --
+SELECT * FROM pedidos ORDER BY valor_total ASC; 
+
+-- IS NULL: VERIFICA CAMPOS VAZIOS--
+SELECT * FROM clientes 	WHERE email IS NULL;
+
+-- BETWEEN: FILTRA POR FAIXAS DE VALORES --
+SELECT * FROM pedidos WHERE valor_total BETWEEN 10 and 300;
+
+-- LIMIT: MOSTRA APENAS OS PRIMEIROS RESULTADOS
+SELECT * FROM pedidos ORDER BY valor_total DESC LIMIT 3;
+
+
+
+
 
